@@ -1,0 +1,320 @@
+:root {
+  --light: #fefefe;
+  --light-op-50: #fefefe80;
+  --light-op-20: #fefefe33;
+  --light-op-10: #fefefe1a;
+  --light-op-5: #fefefe0d;
+
+  --dark: #151515;
+  --dark-op-50: #15151580;
+  --dark-op-10: #1515151a;
+  --dark-op-5: #1515150d;
+  --dark-op-2: #15151505;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --text-color: var(--dark);
+
+  --border-color-switch-track: var(--dark-op-50);
+  --bg-color-switch-track: var(--dark-op-5);
+  --bg-color-switch-toggle: var(--light);
+  --box-shadow-switch-toggle-hover: var(--dark-op-10);
+
+  --border-color-btn-link: var(--dark-op-50);
+  --bg-color-btn-link: var(--dark-op-5);
+  --border-color-btn-link-hover: var(--dark);
+  --bg-color-btn-link-hover: var(--dark-op-2);
+
+  --bg-color-btn-social-link-hover: var(--dark-op-10);
+
+  --bg-color-bubble: rgba(77, 0, 179, 0.2);
+
+  max-width: calc(100vw - (100vw - 100%));
+  min-height: calc(100vh - (100vh - 100%));
+
+  background-color: #fefefe;
+  color: #151515;
+
+  opacity: 0;
+
+  transition: opacity 0.5s;
+}
+
+html.dark body {
+  --text-color: var(--light);
+
+  --bg-img-lg-dark: url('./../imgs/bg-dark-lg.png') no-repeat center top/cover fixed;
+  --bg-img-md-dark: url('./../imgs/bg-dark-md.png') no-repeat center top/cover fixed;
+  --bg-img-sm-dark: url('./../imgs/bg-dark-sm.png') no-repeat center top/cover fixed;
+
+  --border-color-switch-track: var(--light-op-50);
+  --bg-color-switch-track: var(--light-op-10);
+  --bg-color-switch-toggle: var(--light);
+  --box-shadow-switch-toggle-hover: var(--light-op-10);
+
+  --border-color-btn-link: var(--light-op-50);
+  --bg-color-btn-link: var(--light-op-10);
+  --border-color-btn-link-hover: var(--light);
+  --bg-color-btn-link-hover: var(--light-op-5);
+
+  --bg-color-btn-social-link-hover: var(--light-op-20);
+
+  --bg-color-bubble: rgba(255, 255, 255, 0.2);
+
+  background: var(--bg-img-lg-dark);
+  color: var(--text-color);
+}
+
+@media (max-width: 1536px) {
+  body {
+    background: var(--bg-img-md-light);
+  }
+
+  html.dark body {
+    background: var(--bg-img-md-dark);
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    background-color: #fefefe;
+    color: #151515;
+  }
+
+  html.dark body {
+    background: var(--bg-img-sm-dark);
+  }
+}
+
+*:focus-visible {
+  outline: 0.125rem solid #841aff;
+  outline-offset: 0.125;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 36.75rem;
+  padding: 3rem 1.25rem;
+  margin: 0 auto;
+}
+
+/* Profile */
+.wrapper-profile {
+  display: grid;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding: 1rem 0;
+
+  text-align: center;
+}
+
+.wrapper-profile .photo {
+  border-radius: 10%;
+  width: 12rem;
+  margin: 0 auto 1rem;
+  border: 2px solid #151515;
+}
+
+.wrapper-profile .name {
+  font-size: 48px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.wrapper-profile .profession {
+  font: 200 1.25rem/100% "Inter", Arial, sans-serif;
+  line-height: 22px;
+}
+
+/* Switch theme */
+.wrapper-switch {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem 0;
+}
+
+.wrapper-switch .switch-track {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color-switch-track);
+  background: var(--bg-color-switch-track);
+  -webkit-backdrop-filter: blur(0.25rem);
+  backdrop-filter: blur(0.25rem);
+
+  width: 4rem;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.wrapper-switch .switch-track .switch-toggle {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+
+  cursor: pointer;
+
+  content: url("./../svg/moon-stars.svg");
+
+  background: var(--bg-color-switch-toggle);
+  padding: 0.5rem;
+  border-radius: 50%;
+
+  transform: translateX(-0.0625rem);
+
+  transition: transform 0.2s;
+}
+
+.wrapper-switch .switch-track:hover .switch-toggle {
+  box-shadow: 0 0 0.125rem 0.5rem var(--box-shadow-switch-toggle-hover);
+}
+
+.wrapper-switch .switch-track .switch-toggle:checked {
+  content: url("./../svg/sun.svg");
+
+  transform: translateX(calc(2rem - 0.0625rem));
+}
+
+/* Links */
+.wrapper-links {
+  display: grid;
+  gap: 1rem;
+
+  padding: 1rem 0;
+
+  list-style: none;
+}
+
+.wrapper-links .btn-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem 1.5rem;
+
+  text-decoration: none;
+  color: var(--text-color);
+  text-align: center;
+  font: 400 1rem/100% "Inter", Arial, sans-serif;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color-btn-link);
+
+  background: var(--bg-color-btn-link);
+
+  -webkit-backdrop-filter: Blur(0.25rem);
+  backdrop-filter: Blur(0.25rem);
+
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.wrapper-links .btn-link:hover {
+  box-shadow: inset 0 0 0 1px var(--border-color-btn-link-hover);
+  border-color: var(--border-color-btn-link-hover);
+  background: var(--bg-color-btn-link-hover);
+}
+
+/* Social Links */
+.wrapper-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem 0;
+}
+
+.wrapper-social-links .social-link {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5rem;
+  border-radius: 50%;
+
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+
+  transition: background 0.2s;
+}
+
+.wrapper-social-links .social-link:hover,
+.wrapper-social-links .social-link:active {
+  background: var(--bg-color-btn-social-link-hover);
+}
+
+/* Footer */
+.wrapper-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem 0;
+
+  text-align: center;
+  font: 400 0.875rem/100% "Inter", Arial, sans-serif;
+  color: var(--text-color);
+}
+
+/* Bubbles */
+
+.bubbles-wrapper:not(.show) {
+  display: none;
+}
+
+.bubbles-wrapper {
+  width: calc(100vw - (100vw - 100%));
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  cursor: progress;
+  user-select: none;
+  z-index: -1;
+}
+
+.bubbles-wrapper .bubble {
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: absolute;
+  background-color: var(--bg-color-bubble);
+  pointer-events: none;
+
+  animation: 4s move-from-bottom-to-top forwards ease-out;
+}
+
+@keyframes move-from-bottom-to-top {
+  0% {
+    bottom: 0%;
+  }
+
+  100% {
+    bottom: 110%;
+  }
+}
